@@ -8,8 +8,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ActivityIndicator, AppState, BackHandler, I18nManager, Pressable, StyleSheet, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Celebration, { Party } from "./src/Celebration";
-import { Cache, DEFAULT_ROADMAP, EMPTY_PROGRESS, loadCache, loadManual, loadSeen, Manual, saveManual, saveSeen, sync } from "./src/data";
+import { Cache, DEFAULT_ROADMAP, EMPTY_PROGRESS, Item, loadCache, loadManual, loadSeen, Manual, saveManual, saveSeen, sync } from "./src/data";
 import { compute, itemXp } from "./src/game";
+import { getToken, verifyToken } from "./src/github";
+import { PyProvider } from "./src/PyRunner";
+import Editor from "./src/screens/Editor";
 import Badges from "./src/screens/Badges";
 import Home from "./src/screens/Home";
 import MapScreen from "./src/screens/MapScreen";
@@ -41,6 +44,10 @@ export default function App() {
   const [openPhase, setOpenPhase] = useState<number | null>(null);
   const [party, setParty] = useState<Party | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [editing, setEditing] = useState<Item | null>(null);
+  const [token, setTokenState] = useState<string | null>(null);
+  const [login, setLogin] = useState<string | null>(null);
+  const [toolsTab, setToolsTab] = useState(0);
   const seenRef = useRef<string[] | null>(null);
   const manualRef = useRef<Manual>({});
   const lastSync = useRef(0);
@@ -85,7 +92,12 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const [c, m, seen] = await Promise.all([loadCache(), loadManual(), loadSeen()]);
+      const [c, m, seen, t] = await Promise.all([loadCache(), loadManual(), loadSeen(), getToken()]);
+      if (t) {
+        setTokenState(t);
+        setLogin("ayachzawi");
+        verifyToken(t).then(setLogin).catch(() => {});
+      }
       setCache(c);
       setManual(m);
       manualRef.current = m;
@@ -99,13 +111,14 @@ export default function App() {
 
   useEffect(() => {
     const sub = BackHandler.addEventListener("hardwareBackPress", () => {
+      if (editing) { setEditing(null); return true; }
       if (party) { setParty(null); return true; }
       if (tab === 1 && openPhase !== null) { setOpenPhase(null); return true; }
       if (tab !== 0) { setTab(0); return true; }
       return false;
     });
     return () => sub.remove();
-  }, [tab, openPhase, party]);
+  }, [tab, openPhase, party, editing]);
 
   const toggle = useCallback((id: string) => {
     setManual((prev) => {
@@ -135,22 +148,31 @@ export default function App() {
   }
 
   const openPhaseFromHome = (i: number) => { setOpenPhase(i); setTab(1); };
+  const afterSubmit = () => {
+    // GitHub يحتاج قرابة دقيقة ليصحّح ويحدّث progress.json
+    [50000, 90000, 150000].forEach((ms) => setTimeout(() => { lastSync.current = 0; doSync(); }, ms));
+  };
+  const needToken = () => { setEditing(null); setToolsTab(2); setTab(3); };
 
   return (
     <SafeAreaProvider>
+      <PyProvider>
       <StatusBar style="light" />
       <SafeAreaView style={st.root} edges={["top", "left", "right"]}>
         <View style={{ flex: 1 }}>
           {tab === 0 && (
             <Home rm={cache.roadmap} progress={cache.progress} game={game} syncing={syncing} syncedAt={cache.syncedAt}
-              error={error} onSync={() => { lastSync.current = 0; doSync(); }} onToggle={toggle} onOpenPhase={openPhaseFromHome} />
+              error={error} onSync={() => { lastSync.current = 0; doSync(); }} onToggle={toggle} onOpenPhase={openPhaseFromHome} onEdit={setEditing} />
           )}
           {tab === 1 && (
             <MapScreen rm={cache.roadmap} progress={cache.progress} manual={manual} game={game}
-              open={openPhase} onOpen={setOpenPhase} onToggle={toggle} />
+              open={openPhase} onOpen={setOpenPhase} onToggle={toggle} onEdit={setEditing} />
           )}
           {tab === 2 && <Badges game={game} />}
-          {tab === 3 && <Tools rm={cache.roadmap} />}
+          {tab === 3 && (
+            <Tools key={toolsTab} rm={cache.roadmap} login={login} initialTab={toolsTab}
+              onTokenChange={(t, who) => { setTokenState(t); setLogin(who); }} />
+          )}
         </View>
         {toast ? (
           <View style={st.toast} pointerEvents="none"><T font="title" size={18} color={C.bg}>{toast}</T></View>
@@ -159,7 +181,7 @@ export default function App() {
       <SafeAreaView edges={["bottom"]} style={st.tabbar}>
         <View style={{ flexDirection: "row" }}>
           {TABS.map((t, i) => (
-            <Pressable key={t.label} style={st.tab} onPress={() => { setTab(i); if (i === 1 && tab === 1) setOpenPhase(null); }}
+            <Pressable key={t.label} style={st.tab} onPress={() => { if (i === 3) setToolsTab(0); setTab(i); if (i === 1 && tab === 1) setOpenPhase(null); }}
               android_ripple={{ color: "rgba(255,255,255,0.08)", borderless: true }}>
               <Ionicons name={(tab === i ? t.icon : `${t.icon}-outline`) as any} size={24} color={tab === i ? C.acc : C.mut} />
               <T size={11} font={tab === i ? "bold" : "body"} color={tab === i ? C.acc : C.mut} style={{ lineHeight: 16 }}>{t.label}</T>
@@ -168,6 +190,11 @@ export default function App() {
         </View>
       </SafeAreaView>
       <Celebration party={party} onClose={() => setParty(null)} />
+      {editing ? (
+        <Editor item={editing} status={cache.progress.items[editing.id]} token={token}
+          onClose={() => setEditing(null)} onSubmitted={afterSubmit} onNeedToken={needToken} />
+      ) : null}
+      </PyProvider>
     </SafeAreaProvider>
   );
 }

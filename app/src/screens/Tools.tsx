@@ -6,9 +6,11 @@ import { Linking, Pressable, ScrollView, StyleSheet, View } from "react-native";
 import { REPO_URL, Roadmap } from "../data";
 import { C, PAD } from "../theme";
 import { Btn, Card, SectionTitle, T } from "../ui";
+import Connect from "./Connect";
 
-const TABS = ["البرومبتات", "مراجعة الكود", "كيف أرفع حلّي"] as const;
+const TABS = ["البرومبتات", "المراجعة", "ربط GitHub", "من الحاسوب"] as const;
 
+// العمل من الحاسوب (اختياري): المحرر داخل التطبيق يغني عنه في مراحل Python.
 const STEPS: [string, string][] = [
   ["انسخ المستودع مرة واحدة", "git clone https://github.com/ayachzawi/python-journey.git"],
   ["قبل كل جلسة، اسحب آخر تحديث", "git pull"],
@@ -17,8 +19,10 @@ const STEPS: [string, string][] = [
   ["انتظر دقيقة واسحب الشاشة الرئيسية للتحديث", "GitHub يشغّل الاختبارات ويحدّث تقدمك والنقاط تلقائياً"],
 ];
 
-export default function Tools({ rm }: { rm: Roadmap }) {
-  const [tab, setTab] = useState(0);
+export default function Tools({ rm, login, onTokenChange, initialTab = 0 }: {
+  rm: Roadmap; login: string | null; onTokenChange: (t: string | null, login: string | null) => void; initialTab?: number;
+}) {
+  const [tab, setTab] = useState(initialTab);
   const [copied, setCopied] = useState<number | null>(null);
 
   const copy = async (i: number, text: string) => {
@@ -71,13 +75,16 @@ export default function Tools({ rm }: { rm: Roadmap }) {
         </>
       )}
 
-      {tab === 2 && (
+      {tab === 2 && <Connect login={login} onChange={onTokenChange} />}
+
+      {tab === 3 && (
         <>
+          <T size={14} color={C.mut} style={{ marginTop: 16 }}>على الجوال يكفيك المحرر داخل التطبيق. هذه الخطوات لاحقاً عندما تعمل من حاسوب.</T>
           {STEPS.map(([title, code], i) => (
             <Card key={title} style={{ marginTop: 12 }}>
               <T size={16} font="semi">{i + 1}. {title}</T>
               <Pressable onPress={() => code.startsWith("git") || code.startsWith("pytest") ? copy(100 + i, code) : null}>
-                <View style={st.code}>
+                <View style={[st.code, { direction: "ltr" }]}>
                   <T size={13} style={{ fontFamily: "monospace", writingDirection: "ltr", textAlign: "left" }} color={C.ink}>{code}</T>
                 </View>
               </Pressable>

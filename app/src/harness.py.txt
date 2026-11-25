@@ -1,0 +1,64 @@
+import builtins, os, sys, shutil, runpy, traceback, importlib
+
+
+def _no_input(prompt=""):
+    raise RuntimeError("input() غير مدعوم في محرر الجوال بعد. ضع القيمة في متغير مباشرة، مثل: name = \"عياش\"")
+
+
+builtins.input = _no_input
+
+ROOT = "/work"
+
+
+def _reset(files):
+    if os.path.exists(ROOT):
+        shutil.rmtree(ROOT)
+    for path, content in files.items():
+        full = os.path.join(ROOT, path)
+        os.makedirs(os.path.dirname(full), exist_ok=True)
+        with open(full, "w", encoding="utf-8") as f:
+            f.write(content)
+    for name, mod in list(sys.modules.items()):
+        if (getattr(mod, "__file__", None) or "").startswith(ROOT):
+            del sys.modules[name]
+    importlib.invalidate_caches()
+
+
+def _clean_tb(exc):
+    frames = [f for f in traceback.extract_tb(exc.__traceback__) if f.filename.startswith(ROOT)]
+    lines = ["Traceback (most recent call last):\n"]
+    for f in frames:
+        rel = os.path.relpath(f.filename, ROOT)
+        lines.append(f'  File "{rel}", line {f.lineno}\n')
+        if f.line:
+            lines.append(f"    {f.line}\n")
+    lines += traceback.format_exception_only(type(exc), exc)
+    return "".join(lines)
+
+
+def run_job(files, base, entry, mode):
+    if hasattr(files, "to_py"):
+        files = files.to_py()
+    _reset(files)
+    if mode == "run":
+        folder = os.path.join(ROOT, os.path.dirname(entry))
+        os.chdir(folder)
+        sys.path.insert(0, folder)
+        try:
+            runpy.run_path(os.path.join(ROOT, entry), run_name="__main__")
+            return 0
+        except SystemExit as e:
+            return 0 if not e.code else 1
+        except BaseException as e:
+            print(_clean_tb(e), file=sys.stderr, end="")
+            return 1
+        finally:
+            if folder in sys.path:
+                sys.path.remove(folder)
+            os.chdir("/")
+    import pytest
+    os.chdir(ROOT)
+    try:
+        return int(pytest.main([base, "-q", "-p", "no:cacheprovider", "--import-mode=importlib", "--color=no", "--tb=short"]))
+    finally:
+        os.chdir("/")

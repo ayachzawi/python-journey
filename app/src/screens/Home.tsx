@@ -1,13 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Linking, RefreshControl, ScrollView, StyleSheet, View } from "react-native";
-import { howVerified, itemLink, Progress, Roadmap } from "../data";
+import { howVerified, Item, itemLink, Progress, Roadmap } from "../data";
+import { editorSupported } from "../workspace";
 import { Game, itemXp, timeAgo } from "../game";
 import { C, PAD } from "../theme";
 import { Bar, Btn, Card, Chip, SectionTitle, T } from "../ui";
 
 type Props = {
   rm: Roadmap; progress: Progress; game: Game; syncing: boolean; syncedAt: string | null; error: string | null;
-  onSync: () => void; onToggle: (id: string) => void; onOpenPhase: (i: number) => void;
+  onSync: () => void; onToggle: (id: string) => void; onOpenPhase: (i: number) => void; onEdit: (item: Item) => void;
 };
 
 function greeting() {
@@ -15,7 +16,7 @@ function greeting() {
   return h < 12 ? "صباح الخير" : h < 18 ? "مساء النور" : "مساء الخير";
 }
 
-export default function Home({ rm, progress, game, syncing, syncedAt, error, onSync, onToggle, onOpenPhase }: Props) {
+export default function Home({ rm, progress, game, syncing, syncedAt, error, onSync, onToggle, onOpenPhase, onEdit }: Props) {
   const g = game;
   const span = g.nextLevelAt ? g.nextLevelAt - g.levelFloor : 1;
   const into = g.nextLevelAt ? (g.xp - g.levelFloor) / span : 1;
@@ -92,13 +93,15 @@ export default function Home({ rm, progress, game, syncing, syncedAt, error, onS
             <Chip label={`+${itemXp(next, rm)} XP`} color={C.gold} icon="star" />
           </View>
           <T size={19} font="semi" style={{ marginTop: 12, lineHeight: 30 }}>{next.title}</T>
-          <T size={13} color={C.mut} style={{ marginTop: 6 }}>{howVerified(next)}</T>
+          <T size={13} color={C.mut} style={{ marginTop: 6 }}>{editorSupported(next) ? "اكتب حلك في المحرر، جرّبه، ثم أرسله. التصحيح تلقائي." : howVerified(next)}</T>
           {status && !status.done && status.detail && next.check.type !== "manual" ? (
             <T size={13} color={C.gold} style={{ marginTop: 4 }}>الحالة: {status.detail}</T>
           ) : null}
           <View style={{ gap: 10, marginTop: 16 }}>
             {next.check.type === "manual" ? (
               <Btn label="أنهيتها" icon="checkmark-circle" onPress={() => onToggle(next.id)} />
+            ) : editorSupported(next) ? (
+              <Btn label="افتح في المحرر" icon="code-slash" onPress={() => onEdit(next)} />
             ) : link ? (
               <Btn label={next.check.type === "tests" ? "افتح التمرين على GitHub" : "افتح على GitHub"} icon="logo-github" onPress={() => Linking.openURL(link)} />
             ) : null}

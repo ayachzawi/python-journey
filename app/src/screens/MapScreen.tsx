@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Linking, Pressable, ScrollView, StyleSheet, View } from "react-native";
-import { howVerified, itemLink, Manual, Progress, Roadmap } from "../data";
+import { howVerified, Item, itemLink, Manual, Progress, Roadmap } from "../data";
+import { editorSupported } from "../workspace";
 import { Game, itemXp } from "../game";
 import { C, PAD } from "../theme";
 import { Bar, Btn, Card, Chip, SectionTitle, T } from "../ui";
@@ -8,6 +9,7 @@ import { Bar, Btn, Card, Chip, SectionTitle, T } from "../ui";
 type Props = {
   rm: Roadmap; progress: Progress; manual: Manual; game: Game;
   open: number | null; onOpen: (i: number | null) => void; onToggle: (id: string) => void;
+  onEdit: (item: Item) => void;
 };
 
 export default function MapScreen(props: Props) {
@@ -54,7 +56,7 @@ function Overview({ rm, game, onOpen }: Props) {
   );
 }
 
-function PhaseDetail({ rm, progress, manual, game, index, onOpen, onToggle }: Props & { index: number }) {
+function PhaseDetail({ rm, progress, manual, game, index, onOpen, onToggle, onEdit }: Props & { index: number }) {
   const p = rm.phases[index];
   if (!p) return null;
   const groups: [string, typeof p.items][] = [
@@ -100,9 +102,13 @@ function PhaseDetail({ rm, progress, manual, game, index, onOpen, onToggle }: Pr
                     {!done && status?.detail && !manualType ? <T size={12} color={C.gold}>{status.detail}</T> : null}
                     <View style={{ flexDirection: "row", gap: 8, marginTop: 6, flexWrap: "wrap" }}>
                       <Chip label={`+${itemXp(it, rm)} XP`} color={done ? C.ok : C.gold} icon="star" />
-                      {link && !done ? (
+                      {editorSupported(it) ? (
+                        <Pressable onPress={() => onEdit(it)} hitSlop={6}>
+                          <Chip label={done ? "افتح في المحرر" : "ابدأ في المحرر"} color={C.acc} icon="code-slash" />
+                        </Pressable>
+                      ) : link && !done ? (
                         <Pressable onPress={() => Linking.openURL(link)} hitSlop={6}>
-                          <Chip label={it.check.type === "file" ? "اكتبه على GitHub" : "افتح على GitHub"} color={C.acc} icon="logo-github" />
+                          <Chip label="افتح على GitHub" color={C.acc} icon="logo-github" />
                         </Pressable>
                       ) : null}
                     </View>
