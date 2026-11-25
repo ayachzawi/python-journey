@@ -1,0 +1,944 @@
+{
+ "version": 1,
+ "repo": "ayachzawi/python-journey",
+ "xp": {
+  "topic": 20,
+  "tests_bonus": 15,
+  "project": 150,
+  "review": 60
+ },
+ "levels": [
+  [
+   0,
+   "مبتدئ"
+  ],
+  [
+   100,
+   "مستكشف"
+  ],
+  [
+   300,
+   "متدرّب"
+  ],
+  [
+   600,
+   "مبرمج ناشئ"
+  ],
+  [
+   1000,
+   "مطوّر"
+  ],
+  [
+   1500,
+   "مطوّر محترف"
+  ],
+  [
+   2100,
+   "مهندس"
+  ],
+  [
+   2800,
+   "خبير"
+  ]
+ ],
+ "phases": [
+  {
+   "id": "p0",
+   "title": "التجهيز وأدوات المبرمج",
+   "short": "التجهيز",
+   "weeks": 1,
+   "goal": "بيئة عمل حقيقية على جهازك، وعادة تعلّم يومية ثابتة.",
+   "prompt": "علّمني",
+   "resources": [
+    {
+     "label": "كتاب Pro Git المجاني",
+     "url": "https://git-scm.com/book/en/v2"
+    },
+    {
+     "label": "تشغيل Python في VS Code",
+     "url": "https://code.visualstudio.com/docs/python/python-tutorial"
+    }
+   ],
+   "items": [
+    {
+     "id": "p0-t01",
+     "kind": "topic",
+     "title": "ثبّت Python وVS Code وشغّل أول ملف من الطرفية",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p0/t01-hello"
+     }
+    },
+    {
+     "id": "p0-t02",
+     "kind": "topic",
+     "title": "أوامر الطرفية الأساسية: cd وls وmkdir",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p0-t03",
+     "kind": "topic",
+     "title": "Git محلياً: init وadd وcommit وlog (5 commits)",
+     "check": {
+      "type": "commits",
+      "min": 5
+     }
+    },
+    {
+     "id": "p0-t04",
+     "kind": "topic",
+     "title": "ارفع أول commit إلى GitHub بـ push",
+     "check": {
+      "type": "commits",
+      "min": 1
+     }
+    },
+    {
+     "id": "p0-t05",
+     "kind": "topic",
+     "title": "طريقة التعلم: البرومبتات الأربعة، ولا نسخ لكود جاهز",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p0-project",
+     "kind": "project",
+     "title": "دفتر التعلم: 3 ملفات يومية في مجلد journal/",
+     "check": {
+      "type": "dir",
+      "path": "journal",
+      "min_files": 3,
+      "ext": [
+       ".md"
+      ]
+     }
+    },
+    {
+     "id": "p0-review",
+     "kind": "review",
+     "title": "افتح مستودعاً مشهوراً واشرح وظيفة كل ملف في جذره. اكتب ذلك في reviews/p0.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p0.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  },
+  {
+   "id": "p1",
+   "title": "أساسيات البرمجة بـ Python",
+   "short": "أساسيات Python",
+   "weeks": 5,
+   "goal": "أن تكتب برامج صغيرة كاملة بنفسك وتفهم كل سطر فيها.",
+   "prompt": "علّمني + تلميح",
+   "resources": [
+    {
+     "label": "CS50P من هارفارد (مجاني)",
+     "url": "https://cs50.harvard.edu/python/"
+    },
+    {
+     "label": "الدليل الرسمي لـ Python",
+     "url": "https://docs.python.org/3/tutorial/"
+    }
+   ],
+   "items": [
+    {
+     "id": "p1-t01",
+     "kind": "topic",
+     "title": "المتغيرات والعمليات وf-strings",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t01-variables"
+     }
+    },
+    {
+     "id": "p1-t02",
+     "kind": "topic",
+     "title": "الشروط if/elif/else",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t02-conditions"
+     }
+    },
+    {
+     "id": "p1-t03",
+     "kind": "topic",
+     "title": "الحلقات for وwhile",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t03-loops"
+     }
+    },
+    {
+     "id": "p1-t04",
+     "kind": "topic",
+     "title": "الدوال: المعاملات والقيم الافتراضية",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t04-functions"
+     }
+    },
+    {
+     "id": "p1-t05",
+     "kind": "topic",
+     "title": "القوائم والقواميس",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t05-collections"
+     }
+    },
+    {
+     "id": "p1-t06",
+     "kind": "topic",
+     "title": "التعامل مع النصوص",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t06-strings"
+     }
+    },
+    {
+     "id": "p1-t07",
+     "kind": "topic",
+     "title": "الأخطاء: Traceback وtry/except",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t07-errors"
+     }
+    },
+    {
+     "id": "p1-t08",
+     "kind": "topic",
+     "title": "الملفات وJSON",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t08-files"
+     }
+    },
+    {
+     "id": "p1-t09",
+     "kind": "topic",
+     "title": "الوحدات وpip وvenv",
+     "check": {
+      "type": "tests",
+      "dir": "exercises/p1/t09-modules"
+     }
+    },
+    {
+     "id": "p1-project",
+     "kind": "project",
+     "title": "أداة سطر أوامر لتتبّع دخل أعمالك الحرة (projects/p1-income-tracker)",
+     "check": {
+      "type": "project",
+      "path": "projects/p1-income-tracker"
+     }
+    },
+    {
+     "id": "p1-review",
+     "kind": "review",
+     "title": "اطلب حلاً لتمرين من Claude واستخرج 3 تحسينات بنفسك. اكتبها في reviews/p1.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p1.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "title": "التفكير كمبرمج",
+   "short": "التفكير والاختبار",
+   "weeks": 4,
+   "goal": "تفكيك المشكلة، وتتبّع الأخطاء، وقراءة كود غيرك، وإثبات صحة الكود بالاختبارات.",
+   "prompt": "اختبر معايا",
+   "resources": [
+    {
+     "label": "توثيق pytest",
+     "url": "https://docs.pytest.org/"
+    },
+    {
+     "label": "Debugging في VS Code",
+     "url": "https://code.visualstudio.com/docs/python/debugging"
+    }
+   ],
+   "items": [
+    {
+     "id": "p2-t01",
+     "kind": "topic",
+     "title": "تفكيك المشكلة بخطوات مكتوبة قبل البرمجة",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p2-t02",
+     "kind": "topic",
+     "title": "التصحيح بـ print ثم Debugger في VS Code",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p2-t03",
+     "kind": "topic",
+     "title": "قراءة كود غيرك وتتبّعه سطراً سطراً",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p2-t04",
+     "kind": "topic",
+     "title": "الاختبارات بـ pytest والحالات الطرفية",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p2-t05",
+     "kind": "topic",
+     "title": "الأصناف والكائنات OOP بقدر الحاجة",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p2-t06",
+     "kind": "topic",
+     "title": "الكود النظيف: أسماء واضحة ودوال صغيرة",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p2-t07",
+     "kind": "topic",
+     "title": "تعقيد الخوارزميات Big-O مبسطاً",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p2-project",
+     "kind": "project",
+     "title": "أعد كتابة مشروع المرحلة 1 بوحدات و10 اختبارات (projects/p2-refactor)",
+     "check": {
+      "type": "project",
+      "path": "projects/p2-refactor"
+     }
+    },
+    {
+     "id": "p2-review",
+     "kind": "review",
+     "title": "اكتب تقرير مراجعة لكود ولّده AI في أحد مشاريعك: reviews/p2.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p2.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "title": "أساسيات الويب",
+   "short": "أساسيات الويب",
+   "weeks": 5,
+   "goal": "أن تفهم ما يحدث بين المتصفح والخادم، وتكتب واجهة تفاعلية بلا مكتبات.",
+   "prompt": "علّمني",
+   "resources": [
+    {
+     "label": "MDN: تعلّم تطوير الويب",
+     "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development"
+    },
+    {
+     "label": "دليل TypeScript",
+     "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+    }
+   ],
+   "items": [
+    {
+     "id": "p3-t01",
+     "kind": "topic",
+     "title": "كيف يعمل الويب: HTTP ورموز الحالة وJSON",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p3-t02",
+     "kind": "topic",
+     "title": "HTML دلالي وإتاحة الوصول",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p3-t03",
+     "kind": "topic",
+     "title": "CSS: Flexbox وGrid والتصميم المتجاوب وRTL",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p3-t04",
+     "kind": "topic",
+     "title": "JavaScript: المتغيرات والدوال والمصفوفات والكائنات",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p3-t05",
+     "kind": "topic",
+     "title": "DOM والأحداث",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p3-t06",
+     "kind": "topic",
+     "title": "async/await وfetch",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p3-t07",
+     "kind": "topic",
+     "title": "TypeScript: الأنواع والواجهات",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p3-project",
+     "kind": "project",
+     "title": "صفحة عربية تجلب بيانات من API عام مع بحث وفلترة (projects/p3-web)",
+     "check": {
+      "type": "project",
+      "path": "projects/p3-web"
+     }
+    },
+    {
+     "id": "p3-review",
+     "kind": "review",
+     "title": "تتبّع طلبات Network في DevTools لموقعك ووثّقها: reviews/p3.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p3.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "title": "الفرونت آند: React",
+   "short": "React",
+   "weeks": 6,
+   "goal": "أن تبني واجهات حقيقية بيدك وتفهم ما يولّده Lovable والـ AI.",
+   "prompt": "علّمني + تلميح",
+   "resources": [
+    {
+     "label": "react.dev/learn",
+     "url": "https://react.dev/learn"
+    },
+    {
+     "label": "Next.js Learn",
+     "url": "https://nextjs.org/learn"
+    }
+   ],
+   "items": [
+    {
+     "id": "p4-t01",
+     "kind": "topic",
+     "title": "المكونات وprops",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-t02",
+     "kind": "topic",
+     "title": "useState وuseEffect",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-t03",
+     "kind": "topic",
+     "title": "القوائم والنماذج والتحقق",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-t04",
+     "kind": "topic",
+     "title": "التوجيه Routing",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-t05",
+     "kind": "topic",
+     "title": "جلب البيانات: التحميل والخطأ والفراغ",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-t06",
+     "kind": "topic",
+     "title": "Tailwind ونظام تصميم موحد",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-t07",
+     "kind": "topic",
+     "title": "Next.js: الخادم مقابل المتصفح",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-t08",
+     "kind": "topic",
+     "title": "React Native وExpo للجوال",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p4-project",
+     "kind": "project",
+     "title": "لوحة تحكم لمتابعة العملاء تبنيها بيدك (projects/p4-dashboard)",
+     "check": {
+      "type": "project",
+      "path": "projects/p4-dashboard"
+     }
+    },
+    {
+     "id": "p4-review",
+     "kind": "review",
+     "title": "اشرح بنية أحد مشاريعك على Lovable مجلداً مجلداً: reviews/p4.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p4.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "title": "الباك آند وقواعد البيانات",
+   "short": "الباك آند وSQL",
+   "weeks": 6,
+   "goal": "أن تصمم البيانات وتبني API آمناً، وتفهم ما تفعله Supabase بدلاً منك.",
+   "prompt": "اختبر معايا",
+   "resources": [
+    {
+     "label": "دليل FastAPI",
+     "url": "https://fastapi.tiangolo.com/tutorial/"
+    },
+    {
+     "label": "دروس PostgreSQL",
+     "url": "https://www.postgresql.org/docs/current/tutorial.html"
+    },
+    {
+     "label": "Supabase RLS",
+     "url": "https://supabase.com/docs/guides/database/postgres/row-level-security"
+    },
+    {
+     "label": "OWASP Top 10",
+     "url": "https://owasp.org/www-project-top-ten/"
+    }
+   ],
+   "items": [
+    {
+     "id": "p5-t01",
+     "kind": "topic",
+     "title": "SQL: SELECT وJOIN وGROUP BY",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-t02",
+     "kind": "topic",
+     "title": "تصميم الجداول والعلاقات والفهارس",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-t03",
+     "kind": "topic",
+     "title": "REST API بـ FastAPI",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-t04",
+     "kind": "topic",
+     "title": "التحقق من المدخلات بـ Pydantic",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-t05",
+     "kind": "topic",
+     "title": "المصادقة والصلاحيات: JWT والأدوار",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-t06",
+     "kind": "topic",
+     "title": "Supabase بفهم: سياسات RLS",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-t07",
+     "kind": "topic",
+     "title": "متغيرات البيئة وإدارة الأسرار",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-t08",
+     "kind": "topic",
+     "title": "الأمان عملياً: OWASP Top 10",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p5-project",
+     "kind": "project",
+     "title": "API لمتجر صغير بـ FastAPI وPostgres مع اختبارات (projects/p5-api)",
+     "check": {
+      "type": "project",
+      "path": "projects/p5-api"
+     }
+    },
+    {
+     "id": "p5-review",
+     "kind": "review",
+     "title": "راجع سياسات RLS في أحد مشاريعك على Supabase: reviews/p5.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p5.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  },
+  {
+   "id": "p6",
+   "title": "هندسة تطبيقات الذكاء الاصطناعي",
+   "short": "تطبيقات AI",
+   "weeks": 6,
+   "goal": "تطبيقات AI يمكن قياس جودتها والتحكم في تكلفتها وأمانها.",
+   "prompt": "اختبر معايا",
+   "resources": [
+    {
+     "label": "توثيق Claude API",
+     "url": "https://docs.claude.com"
+    },
+    {
+     "label": "دورات Anthropic",
+     "url": "https://github.com/anthropics/courses"
+    }
+   ],
+   "items": [
+    {
+     "id": "p6-t01",
+     "kind": "topic",
+     "title": "Claude API: الرسائل وتعليمات النظام والبث",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t02",
+     "kind": "topic",
+     "title": "مخرجات JSON مهيكلة والتحقق منها",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t03",
+     "kind": "topic",
+     "title": "استخدام الأدوات Tool use",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t04",
+     "kind": "topic",
+     "title": "Embeddings والبحث الدلالي",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t05",
+     "kind": "topic",
+     "title": "RAG: التقطيع والاسترجاع وpgvector",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t06",
+     "kind": "topic",
+     "title": "الوكلاء Agents: الحلقة والحدود",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t07",
+     "kind": "topic",
+     "title": "التقييم Evals بالأرقام",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t08",
+     "kind": "topic",
+     "title": "التكلفة وزمن الاستجابة والتخزين المؤقت",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-t09",
+     "kind": "topic",
+     "title": "الأمان: حقن البرومبت وحماية المفاتيح",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p6-project",
+     "kind": "project",
+     "title": "مساعد عربي يجيب من مستنداتك RAG مع تقييم 20 سؤالاً (projects/p6-rag)",
+     "check": {
+      "type": "project",
+      "path": "projects/p6-rag"
+     }
+    },
+    {
+     "id": "p6-review",
+     "kind": "review",
+     "title": "قارن نسختين من البرومبت بالأرقام على مجموعة اختبار: reviews/p6.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p6.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  },
+  {
+   "id": "p7",
+   "title": "التنظيم والإطلاق والمراجعة الاحترافية",
+   "short": "الإطلاق والمراجعة",
+   "weeks": 4,
+   "goal": "أن تدير مشروعاً كفريق محترف: كل تغيير يُراجع ويُختبر قبل النشر.",
+   "prompt": "راجع معايا",
+   "resources": [
+    {
+     "label": "GitHub Actions",
+     "url": "https://docs.github.com/en/actions"
+    },
+    {
+     "label": "Docker: البداية",
+     "url": "https://docs.docker.com/get-started/"
+    }
+   ],
+   "items": [
+    {
+     "id": "p7-t01",
+     "kind": "topic",
+     "title": "بنية المشروع: فصل الواجهة والمنطق والبيانات",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p7-t02",
+     "kind": "topic",
+     "title": "الفروع وPull Requests ورسائل commit",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p7-t03",
+     "kind": "topic",
+     "title": "مراجعة الكود بالقائمة",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p7-t04",
+     "kind": "topic",
+     "title": "CI بـ GitHub Actions",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p7-t05",
+     "kind": "topic",
+     "title": "النشر: Cloudflare وأساسيات Docker",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p7-t06",
+     "kind": "topic",
+     "title": "السجلات والمراقبة وتتبّع الأخطاء",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p7-t07",
+     "kind": "topic",
+     "title": "التوثيق: README وسجل القرارات",
+     "check": {
+      "type": "manual"
+     }
+    },
+    {
+     "id": "p7-project",
+     "kind": "project",
+     "title": "المشروع الختامي: أعد بناء أحد تطبيقاتك التي تعتمد على AI بتنظيم صحيح (projects/p7-capstone)",
+     "check": {
+      "type": "project",
+      "path": "projects/p7-capstone"
+     }
+    },
+    {
+     "id": "p7-review",
+     "kind": "review",
+     "title": "سجّل مراجعتك لكل PR يولّده AI وما رفضته ولماذا: reviews/p7.md",
+     "check": {
+      "type": "file",
+      "path": "reviews/p7.md",
+      "min_chars": 300
+     }
+    }
+   ]
+  }
+ ],
+ "prompts": [
+  {
+   "title": "علّمني",
+   "when": "لكل فكرة جديدة",
+   "text": "أنا بتعلم بايثون. فاهم [ما تعرفه]، ولسه بتعلم [الموضوع]. اشرحلي فكرة واحدة بمثال صغير، وبعدها اديني تمرين مشابه من غير الحل. استنى إجابتي، وراجعها معايا خطوة بخطوة."
+  },
+  {
+   "title": "تلميح",
+   "when": "عندما يظهر لك خطأ",
+   "text": "ده الكود: [الصق الكود]. وده الخطأ: [الصق رسالة الخطأ]. كنت متوقع: [اكتب المتوقع]. اديني تلميح واحد من غير الكود المصحح، واستنى محاولتي. بعد ما أحاول، قارن حلي بحلك واشرح الفرق."
+  },
+  {
+   "title": "اختبر معايا",
+   "when": "بعد أن يشتغل الكود",
+   "text": "ده الكود: [الصق الكود]. والمطلوب منه: [اشرح السلوك المتوقع]. اقترح اختبارات عادية وحالات طرفية، وحدد المدخلات والنتائج المتوقعة وسبب كل اختبار. ما تفترضش إن الكود صح لمجرد إنه اشتغل مرة."
+  },
+  {
+   "title": "راجع معايا",
+   "when": "لتدريب مهارة المراجعة",
+   "text": "ده كود ولّده AI: [الصق الكود]. والمطلوب منه: [اشرح الهدف]. أنا راجعته ولقيت: [ملاحظاتي]. قيّم مراجعتي: إيه اللي فاتني؟ رتّب المشاكل حسب الخطورة، ومن غير ما تعيد كتابة الكود."
+  }
+ ],
+ "review_checklist": [
+  {
+   "title": "الصحة",
+   "items": [
+    "جرّبته بنفسك ولم تكتفِ بأنه اشتغل مرة",
+    "الحالات الطرفية: فارغ، سالب، كبير جداً، نص عربي"
+   ]
+  },
+  {
+   "title": "الأمان",
+   "items": [
+    "لا مفاتيح أو كلمات مرور داخل الكود",
+    "مدخلات المستخدم يُتحقق منها (حقن SQL أو برومبت)",
+    "الصلاحيات وRLS: من يقرأ ماذا؟"
+   ]
+  },
+  {
+   "title": "الوضوح",
+   "items": [
+    "أسماء تشرح نفسها ودوال قصيرة",
+    "التعليقات تشرح لماذا، لا ماذا"
+   ]
+  },
+  {
+   "title": "التعامل مع الفشل",
+   "items": [
+    "انقطاع الشبكة أو خطأ الـ API أو بيانات ناقصة",
+    "رسالة مفهومة بدل شاشة بيضاء"
+   ]
+  },
+  {
+   "title": "البنية",
+   "items": [
+    "لا تكرار ولا منطق أعمال داخل الواجهة",
+    "لا مكتبات جديدة بلا سبب"
+   ]
+  },
+  {
+   "title": "الاختبارات",
+   "items": [
+    "اختبار يفشل فعلاً إذا كُسر السلوك",
+    "الحالات الطرفية مغطاة"
+   ]
+  },
+  {
+   "title": "الأداء",
+   "items": [
+    "لا استعلامات داخل حلقات",
+    "لا تحميل بيانات أكثر من الحاجة"
+   ]
+  },
+  {
+   "title": "فخاخ كود الـ AI",
+   "items": [
+    "دالة أو مكتبة مخترعة",
+    "تعديل ملفات لم تطلب تغييرها",
+    "حذف معالجة أخطاء أو اختبارات بصمت"
+   ]
+  }
+ ]
+}

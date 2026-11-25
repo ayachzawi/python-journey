@@ -1,0 +1,387 @@
+{
+ "generated_at": "2026-11-25T07:02:30Z",
+ "commits": 0,
+ "commit_days": [],
+ "items": {
+  "p0-t01": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p0-t02": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p0-t03": {
+   "via": "commits",
+   "done": false,
+   "detail": "0 من 5 commits"
+  },
+  "p0-t04": {
+   "via": "commits",
+   "done": false,
+   "detail": "0 من 1 commits"
+  },
+  "p0-t05": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p0-project": {
+   "via": "dir",
+   "done": false,
+   "detail": "0 من 3 ملفات"
+  },
+  "p0-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  },
+  "p1-t01": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t02": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t03": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t04": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t05": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t06": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t07": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t08": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-t09": {
+   "via": "tests",
+   "done": false,
+   "detail": "لم يُرفع الحل بعد"
+  },
+  "p1-project": {
+   "via": "project",
+   "done": false,
+   "detail": "ينقصه: README.md، ملف كود"
+  },
+  "p1-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  },
+  "p2-t01": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p2-t02": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p2-t03": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p2-t04": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p2-t05": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p2-t06": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p2-t07": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p2-project": {
+   "via": "project",
+   "done": false,
+   "detail": "ينقصه: README.md، ملف كود"
+  },
+  "p2-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  },
+  "p3-t01": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p3-t02": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p3-t03": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p3-t04": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p3-t05": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p3-t06": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p3-t07": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p3-project": {
+   "via": "project",
+   "done": false,
+   "detail": "ينقصه: README.md، ملف كود"
+  },
+  "p3-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  },
+  "p4-t01": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-t02": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-t03": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-t04": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-t05": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-t06": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-t07": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-t08": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p4-project": {
+   "via": "project",
+   "done": false,
+   "detail": "ينقصه: README.md، ملف كود"
+  },
+  "p4-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  },
+  "p5-t01": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-t02": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-t03": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-t04": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-t05": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-t06": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-t07": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-t08": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p5-project": {
+   "via": "project",
+   "done": false,
+   "detail": "ينقصه: README.md، ملف كود"
+  },
+  "p5-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  },
+  "p6-t01": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t02": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t03": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t04": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t05": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t06": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t07": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t08": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-t09": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p6-project": {
+   "via": "project",
+   "done": false,
+   "detail": "ينقصه: README.md، ملف كود"
+  },
+  "p6-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  },
+  "p7-t01": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p7-t02": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p7-t03": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p7-t04": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p7-t05": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p7-t06": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p7-t07": {
+   "via": "manual",
+   "done": false,
+   "detail": "تؤشّر عليها بنفسك في التطبيق"
+  },
+  "p7-project": {
+   "via": "project",
+   "done": false,
+   "detail": "ينقصه: README.md، ملف كود"
+  },
+  "p7-review": {
+   "via": "file",
+   "done": false,
+   "detail": "الملف غير موجود"
+  }
+ }
+}

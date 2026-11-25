@@ -1,0 +1,43 @@
+name: تحديث التقدم
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["progress.json", "app/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: progress
+  cancel-in-progress: false
+
+jobs:
+  progress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: تثبيت المكتبات
+        run: |
+          pip install pytest
+          find exercises projects -name requirements.txt -not -path "*/node_modules/*" -exec pip install -r {} \; || true
+      - name: فحص التمارين وبناء progress.json
+        run: python scripts/build_progress.py
+      - name: حفظ progress.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add progress.json
+          if git diff --cached --quiet; then echo "لا تغيير"; exit 0; fi
+          git commit -m "chore: تحديث التقدم [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase -q origin main && git push && exit 0
+            sleep 5
+          done
+          exit 1

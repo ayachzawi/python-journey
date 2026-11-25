@@ -1,0 +1,63 @@
+name: بناء تطبيق أندرويد
+
+on:
+  push:
+    branches: [main]
+    paths: ["app/**", "content/roadmap.json", ".github/workflows/build-apk.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apk
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: نسخة احتياطية من المحتوى داخل التطبيق
+        run: cp ../content/roadmap.json src/roadmap.default.json
+      - run: npm ci
+      - run: npx expo prebuild --platform android --no-install --clean
+      - name: مفتاح التوقيع (إن وُجد)
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+            echo "KEYSTORE_FILE=$RUNNER_TEMP/release.keystore" >> "$GITHUB_ENV"
+          else
+            echo "لا يوجد مفتاح خاص، سيُستعمل مفتاح القالب الثابت"
+          fi
+      - name: بناء APK
+        working-directory: app/android
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --no-daemon
+      - name: تجهيز الملف
+        run: cp android/app/build/outputs/apk/release/app-release.apk ../python-journey.apk
+      - name: نشر الإصدار
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: app-v1.0.${{ github.run_number }}
+          name: رحلة البرمجة 1.0.${{ github.run_number }}
+          body: حمّل python-journey.apk وثبّته على جوالك.
+          files: python-journey.apk
+          make_latest: true

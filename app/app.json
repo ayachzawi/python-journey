@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "رحلة البرمجة",
+    "slug": "python-journey",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0A0D18",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0D18"
+    },
+    "android": {
+      "package": "com.ayach.pythonjourney",
+      "adaptiveIcon": {
+        "backgroundColor": "#1240E0",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      ["expo-localization", { "supportsRTL": true, "forcesRTL": true }],
+      "expo-font",
+      "./plugins/withReleaseSigning"
+    ]
+  }
+}
